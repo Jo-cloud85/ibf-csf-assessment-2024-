@@ -1,1 +1,55 @@
 <!-- View 1 -->
+<div class="d-flex flex-column align-items-center justify-content-center gap-3">
+    <div>
+        <webcam [width]="width" [height]="height" 
+        [trigger]="trigger"
+            (imageCapture)="takePic($event)">
+        </webcam>
+    </div>
+    
+    <div class="d-flex align-items-center justify-content-center gap-3">
+        <label class="form-label pe-5">Aspect: </label>
+        <div class="d-flex gap-5">
+            <label>
+                <input 
+                    class="me-2" 
+                    type="radio" 
+                    name="aspect"
+                    value="16:9"
+                >16:9
+            </label>
+            <label>
+                <input 
+                    class="me-2" 
+                    type="radio" 
+                    name="aspect"
+                    value="4:3"
+                    checked 
+                >4:3
+            </label>
+            <label>
+                <input 
+                    class="me-2" 
+                    type="radio" 
+                    name="aspect"
+                    value="3:2"
+                >3:2
+            </label>
+            <label>
+                <input 
+                    class="me-2" 
+                    type="radio" 
+                    name="aspect"
+                    value="1:1"
+                >1:1
+            </label>
+        </div>
+    </div>
+    <div>
+        <button type="button" (click)="snap()" class="btn btn-primary">Snap</button>
+    </div>
+</div>
+
+<!-- <div *ngFor="let p of pics">
+    <img [src]="p" width="100"/>
+</div> -->

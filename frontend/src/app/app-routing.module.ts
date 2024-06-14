@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './views/main.component';
 import { PictureComponent } from './views/picture.component';
+import { leavePost } from './guards';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'job/:id/:company', component: PictureComponent},
+  {path: 'upload-picture', component: PictureComponent, canDeactivate: [leavePost]},
   {path: '**', redirectTo: '/', pathMatch: 'full'}
 ];
 

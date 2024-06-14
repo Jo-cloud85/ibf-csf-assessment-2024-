@@ -1,1 +1,39 @@
 <!-- View 2 -->
+<form [formGroup]="uploadForm" (ngSubmit)="upload()" class="d-flex flex-column gap-3">
+    <div>
+        <img [src]="photoData"/>
+    </div>
+    <div>
+        <label class="form-label">Title</label>
+        <input 
+            class="form-control"
+            type="text"
+            formControlName="title"
+            placeholder="Image title"
+        > 
+        <small 
+            class="form-text text-danger"
+            *ngIf="uploadForm.get('title')?.touched && uploadForm.get('title')?.hasError('required')">
+            This field is required!
+        </small>
+        <small 
+            class="form-text text-danger"
+            *ngIf="uploadForm.get('title')?.touched && uploadForm.get('title')?.hasError('minLength')">
+            Title must be minimally 5 characters long
+        </small>
+    </div>
+    <div>
+        <label class="form-label">Comments</label>
+        <textarea 
+            class="form-control"
+            cols="30" 
+            rows="4"
+            formControlName="comments"
+            placeholder="Write your comments here..."
+        ></textarea>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-dark" [routerLink]="['/']">Back</button>
+        <button class="btn btn-primary" type="submit" [disabled]="uploadForm.invalid">Post</button>
+    </div>
+</form>
