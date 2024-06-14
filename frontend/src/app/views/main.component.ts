@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebcamComponent, WebcamImage } from 'ngx-webcam';
 import { Subject, Subscription } from 'rxjs';
@@ -19,16 +19,17 @@ export class MainComponent implements OnInit, OnDestroy {
   pics: string[] = []
   sub$!: Subscription;
   trigger = new Subject<void>;
+  imageType: string = 'image/png';
+
+  // aspectGroup !: number;
+
+  // const aspectHeight[] = [[500, 282]];
 
   private readonly router = inject(Router);
   private readonly uploadSvc = inject(UploadService);
 
   ngOnInit(): void {
       console.log("init ... " + this.webcam);
-  }
-
-  ngOnDestroy(): void {
-      this.sub$.unsubscribe();
   }
 
   // onFileChange(event: any): void {
@@ -44,10 +45,39 @@ export class MainComponent implements OnInit, OnDestroy {
   // }
 
   ngAfterViewInit(): void {
-      this.webcam.trigger = this.trigger;
-      this.sub$ = this.webcam.imageCapture.subscribe(
-        this.takePic.bind(this)
-      )
+    this.webcam.trigger = this.trigger;
+    this.sub$ = this.webcam.imageCapture.subscribe(
+      this.takePic.bind(this)
+    )
+  }
+  
+  // ngOnChanges(): void {
+  //   this.height = this.aspectGroup;
+  //   this.webcam.trigger = this.trigger;
+  // }
+
+  aspect1() {
+    this.height = 282;
+    this.width = 500;
+    this.webcam.trigger = this.trigger;
+  }
+
+  aspect2() {
+    this.height = 375;
+    this.width = 500;
+    this.webcam.trigger = this.trigger;
+  }
+
+  aspect3() {
+    this.height = 333;
+    this.width = 500;
+    this.webcam.trigger = this.trigger;
+  }
+
+  aspect4() {
+    this.height = 500;
+    this.width = 500;
+    this.webcam.trigger = this.trigger;
   }
 
   snap(){
@@ -58,5 +88,9 @@ export class MainComponent implements OnInit, OnDestroy {
   takePic(webcamImg: WebcamImage){
     this.uploadSvc.photoData = webcamImg.imageAsDataUrl;
     this.pics.push(webcamImg.imageAsDataUrl);
+  }
+
+  ngOnDestroy(): void {
+    this.sub$.unsubscribe();
   }
 }

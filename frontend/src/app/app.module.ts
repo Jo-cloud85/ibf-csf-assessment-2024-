@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './views/main.component';
 import { PictureComponent } from './views/picture.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     WebcamModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

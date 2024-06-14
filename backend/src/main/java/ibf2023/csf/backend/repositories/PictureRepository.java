@@ -28,10 +28,11 @@ public class PictureRepository {
 
 	/*
 		db.travelpics.insertOne({ 
-			date: "___", 
+			date: ISODate("2024-06-14T05:38:29.825+0000"), 
 			title: "My first post", 
 			comments: "Hello there", 
-			url: "___" 
+			url: "https://csf-webcam-app.sgp1.digitaloceanspaces.com/6e5fb93f",
+			pictureSize: 57534
 		})
 	 */
 	// Save single post

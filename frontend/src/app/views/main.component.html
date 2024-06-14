@@ -1,9 +1,7 @@
 <!-- View 1 -->
-<div class="d-flex flex-column align-items-center justify-content-center gap-3">
+<div class="d-flex flex-column align-items-center justify-content-center gap-3 py-5">
     <div>
-        <webcam [width]="width" [height]="height" 
-        [trigger]="trigger"
-            (imageCapture)="takePic($event)">
+        <webcam [width]="width" [height]="height" [trigger]="trigger" (imageCapture)="takePic($event)" [imageType]="imageType">
         </webcam>
     </div>
     
@@ -12,35 +10,39 @@
         <div class="d-flex gap-5">
             <label>
                 <input 
+                    (click)="aspect1()"
                     class="me-2" 
                     type="radio" 
                     name="aspect"
-                    value="16:9"
+                    value="282"
                 >16:9
             </label>
             <label>
                 <input 
+                    (click)="aspect2()"
                     class="me-2" 
                     type="radio" 
                     name="aspect"
-                    value="4:3"
+                    value="375"
                     checked 
                 >4:3
             </label>
             <label>
                 <input 
+                    (click)="aspect3()"
                     class="me-2" 
                     type="radio" 
                     name="aspect"
-                    value="3:2"
+                    value="333"
                 >3:2
             </label>
             <label>
                 <input 
+                    (click)="aspect4()"
                     class="me-2" 
                     type="radio" 
                     name="aspect"
-                    value="1:1"
+                    value="500"
                 >1:1
             </label>
         </div>

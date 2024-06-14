@@ -22,7 +22,6 @@ export class PictureComponent {
   private readonly fb = inject(FormBuilder);
   private readonly uploadSvc = inject(UploadService);
   private readonly router = inject(Router);
-  // private readonly dataToImage = inject(utils);
 
   ngOnInit(): void {
     if(!this.uploadSvc.photoData){
@@ -53,6 +52,6 @@ export class PictureComponent {
 
   // If form is dirty, you wont be able to leave
   isFormDirty() {
-    return this.uploadForm.dirty;
+    return !this.uploadForm.dirty;
   }
 }
