@@ -39,8 +39,10 @@ WORKDIR /app
 COPY --from=javabuild /backend/target/backend-0.0.1-SNAPSHOT.jar app.jar
 
 # Uncomment when you want to run the docker container locally
-ENV S3_SECRET_KEY=
-ENV S3_ACCESS_KEY=
+ENV S3_KEY_SECRET=
+ENV S3_KEY_ACCESS=
+ENV S3_ENDPOINT=
+ENV S3_REGION=
 ENV MONGO_URL=
 
 ENV PORT=3000
